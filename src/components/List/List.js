@@ -6,13 +6,13 @@ import { getContact, getStatusFilter } from 'redux/selectors';
 export const List = () => {
   const contacts = useSelector(getContact);
   const filter = useSelector(getStatusFilter);
-  console.log(contacts);
 
   const normalizeFilter = filter.toLowerCase();
 
   const visibleContact = contacts.filter(contact =>
     contact.name.toLowerCase().includes(normalizeFilter)
   );
+  console.log(visibleContact);
 
   const totalContact = contacts.length;
 
