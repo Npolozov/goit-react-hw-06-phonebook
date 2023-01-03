@@ -1,4 +1,4 @@
-import { Button } from './ListContact.styled';
+import { Button, ConteinerButton } from './ListContact.styled';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contactSlice';
@@ -12,7 +12,9 @@ export function ListContact({ name, number, id }) {
       <p>
         {name}: <span>{number}</span>
       </p>
-      <Button onClick={handleDelete}>Delete</Button>
+      <ConteinerButton>
+        <Button onClick={handleDelete}>Delete</Button>
+      </ConteinerButton>
     </>
   );
 }

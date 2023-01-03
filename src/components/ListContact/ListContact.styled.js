@@ -24,3 +24,7 @@ export const Button = styled.button`
     color: white;
   }
 `;
+
+export const ConteinerButton = styled.div`
+  margin-left: auto;
+`;

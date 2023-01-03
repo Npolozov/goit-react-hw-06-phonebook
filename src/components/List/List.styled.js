@@ -13,11 +13,9 @@ export const ItemStyle = styled.li`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 10px;
-  justify-items: end;
   align-items: center;
 `;
 
-
 export const TotalParagraf = styled.p`
-margin-bottom: 10px;
-`
+  margin-bottom: 10px;
+`;

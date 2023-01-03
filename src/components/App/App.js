@@ -40,7 +40,7 @@ export const App = () => {
         </Wrapper>
         <WrapperContact>
           <Title>Contacts</Title>
-          <Filter />
+          {contacts.length >= 1 && <Filter />}
           {contacts.length > 0 ? (
             <List />
           ) : (
