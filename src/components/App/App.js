@@ -14,7 +14,7 @@ import { GlobalStyle } from '../GlobalStyles.styled';
 import { OpenModal } from 'components/Modal/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useLocalStorage } from '../hooks/useLocal';
+// import { useLocalStorage } from '../hooks/useLocal';
 
 export const App = () => {
   // const [contacts, setContacts] = useLocalStorage('contact');

@@ -7,23 +7,18 @@ import { getContact, getStatusFilter } from 'redux/selectors';
 export const List = () => {
   const contacts = useSelector(getContact);
   const filter = useSelector(getStatusFilter);
-  console.log(contacts);
-  console.log(filter);
 
-  const getVisibleContacts = () => {
-    const normalizeFilter = filter.trim().toLowerCase();
+  const normalizeFilter = filter.toLowerCase();
 
-    return contacts.filter(contact =>
-      contact.name.trim().toLowerCase().includes(normalizeFilter)
-    );
-  };
+  const visibleContact = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(normalizeFilter)
+  );
 
-  const visibleContacts = getVisibleContacts();
   return (
     <ListStyle>
-      {visibleContacts.map(({ name, number, id }) => (
+      {visibleContact.map(({ name, number, id }) => (
         <ItemStyle key={id}>
-          <ListContact name={name} number={number} />
+          <ListContact id={id} name={name} number={number} />
         </ItemStyle>
       ))}
     </ListStyle>

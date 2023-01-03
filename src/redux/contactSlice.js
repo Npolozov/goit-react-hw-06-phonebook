@@ -27,11 +27,11 @@ const contactsSlice = createSlice({
       },
     },
   },
-  deleteTask(state, action) {
-    const index = state.findIndex(contact => contact.id === action.payload);
+  deleteContact(state, action) {
+    const index = state.findIndex(contact => contact.id === action.payload.id);
     state.splice(index, 1);
   },
 });
 
-export const { addContact, deleteTask } = contactsSlice.actions;
+export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactReducer = contactsSlice.reducer;
