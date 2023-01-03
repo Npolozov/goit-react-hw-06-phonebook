@@ -8,29 +8,26 @@ export const List = () => {
   const contacts = useSelector(getContact);
   const filter = useSelector(getStatusFilter);
   console.log(contacts);
+  console.log(filter);
 
-  // const getVisibleContacts = () => {
-  //   const normalizeFilter = filter.trim().toLowerCase();
+  const getVisibleContacts = () => {
+    const normalizeFilter = filter.trim().toLowerCase();
 
-  //   return contacts.filter(contact =>
-  //     contact.name.trim().toLowerCase().includes(normalizeFilter)
-  //   );
-  // };
+    return contacts.filter(contact =>
+      contact.name.trim().toLowerCase().includes(normalizeFilter)
+    );
+  };
 
-  // const visibleContacts = getVisibleContacts();
-  // return (
-  //   <ListStyle>
-  //     {visibleContacts.map(({ name, number, id }) => (
-  //       <ItemStyle key={id}>
-  //         <ListContact
-  //           name={name}
-  //           number={number}
-  //           onDeleteContact={onDeleteContact}
-  //         />
-  //       </ItemStyle>
-  //     ))}
-  //   </ListStyle>
-  // );
+  const visibleContacts = getVisibleContacts();
+  return (
+    <ListStyle>
+      {visibleContacts.map(({ name, number, id }) => (
+        <ItemStyle key={id}>
+          <ListContact name={name} number={number} />
+        </ItemStyle>
+      ))}
+    </ListStyle>
+  );
 };
 
 // List.propTypes = {
