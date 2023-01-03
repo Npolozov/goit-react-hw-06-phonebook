@@ -45,4 +45,6 @@ export const contactReducer = persistReducer(
   contactsSlice.reducer
 );
 
+console.log(contactReducer);
+
 export const { addContact, deleteContact } = contactsSlice.actions;
