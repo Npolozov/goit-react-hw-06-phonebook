@@ -5,14 +5,14 @@ import { deleteContact } from 'redux/contactSlice';
 
 export function ListContact({ name, number, id }) {
   const dispatch = useDispatch();
-  // const handleDelete = () => dispatch(deleteContact(id));
+  const handleDelete = () => dispatch(deleteContact(id));
 
   return (
     <>
       <p>
         {name}: <span>{number}</span>
       </p>
-      <Button onClick={() => dispatch(deleteContact({ id }))}>Delete</Button>
+      <Button onClick={handleDelete}>Delete</Button>
     </>
   );
 }

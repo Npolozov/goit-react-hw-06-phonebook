@@ -16,3 +16,8 @@ export const ItemStyle = styled.li`
   justify-items: end;
   align-items: center;
 `;
+
+
+export const TotalParagraf = styled.p`
+margin-bottom: 10px;
+`

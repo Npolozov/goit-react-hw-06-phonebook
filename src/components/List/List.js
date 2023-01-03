@@ -1,12 +1,12 @@
 import { ListContact } from '../ListContact/ListContact';
-import { ListStyle, ItemStyle } from './List.styled';
-import PropTypes from 'prop-types';
+import { ListStyle, ItemStyle, TotalParagraf } from './List.styled';
 import { useSelector } from 'react-redux';
 import { getContact, getStatusFilter } from 'redux/selectors';
 
 export const List = () => {
   const contacts = useSelector(getContact);
   const filter = useSelector(getStatusFilter);
+  console.log(contacts);
 
   const normalizeFilter = filter.toLowerCase();
 
@@ -14,18 +14,20 @@ export const List = () => {
     contact.name.toLowerCase().includes(normalizeFilter)
   );
 
+  const totalContact = contacts.length;
+
   return (
-    <ListStyle>
-      {visibleContact.map(({ name, number, id }) => (
-        <ItemStyle key={id}>
-          <ListContact id={id} name={name} number={number} />
-        </ItemStyle>
-      ))}
-    </ListStyle>
+    <>
+      <TotalParagraf>Total contacts:{totalContact} </TotalParagraf>
+      {totalContact > 0 && (
+        <ListStyle>
+          {visibleContact.map(({ name, number, id }) => (
+            <ItemStyle key={id}>
+              <ListContact id={id} name={name} number={number} />
+            </ItemStyle>
+          ))}
+        </ListStyle>
+      )}
+    </>
   );
 };
-
-// List.propTypes = {
-//   items: PropTypes.array.isRequired,
-//   onDeleteContact: PropTypes.func.isRequired,
-// };

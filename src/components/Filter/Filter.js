@@ -1,5 +1,5 @@
 import { Wrapper, Label, Input } from './Filter.styled';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getStatusFilter } from 'redux/selectors';
 import { updateFilter } from 'redux/filterSlice';
@@ -20,7 +20,7 @@ export const Filter = () => {
   );
 };
 
-// Filter.propTypes = {
-//   value: PropTypes.string,
-//   onChange: PropTypes.func.isRequired,
-// };
+Filter.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};

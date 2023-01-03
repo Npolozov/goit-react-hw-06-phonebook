@@ -1,17 +1,13 @@
 import { useForm } from 'react-hook-form';
-// import { Formik, Form, ErrorMessage } from 'formik';
 import { Wrapper, Button, Label, Input } from './Form.style';
-// import * as yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactSlice';
+import { getContact } from 'redux/selectors';
 
-// const schema = yup.object().shape({
-//   name: yup.string().required(),
-//   number: yup.number().required(),
-// });
-
-export const ContactForm = () => {
+export const ContactForm = ({ toggleModal }) => {
   const dispatch = useDispatch();
+  const contacts = useSelector(getContact);
 
   const {
     register,
@@ -26,9 +22,24 @@ export const ContactForm = () => {
 
   const onSubmit = values => {
     const { name, number } = values;
-    console.log(name);
-    console.log(number);
-    dispatch(addContact(name, number));
+
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      return toast.error(`${name} is already in contacts.`);
+    } else if (
+      contacts.find(
+        contact => contact.number.toLowerCase() === number.toLowerCase()
+      )
+    ) {
+      return toast.error(`${number} is already in contacts.`);
+    } else {
+      dispatch(addContact(name, number));
+    }
+
+    toggleModal();
   };
 
   return (
@@ -59,38 +70,3 @@ export const ContactForm = () => {
     </form>
   );
 };
-
-// export const ContactForm = ({ onSubmit }) => {
-//   const state = {
-//     name: '',
-//     number: '',
-//   };
-
-//   const handleSubmit = (values, { resetForm }) => {
-//     onSubmit(values);
-//     resetForm();
-//   };
-
-//   return (
-//     <Formik
-//       initialValues={state}
-//       validationSchema={schema}
-//       onSubmit={handleSubmit}
-//     >
-//       <Form>
-//         <Wrapper>
-//           <Label htmlFor="name">Name</Label>
-//           <Input type="text" id="name" name="name" />
-//           <ErrorMessage name="name" />
-//         </Wrapper>
-//         <Wrapper>
-//           <Label htmlFor="number">Number</Label>
-//           <Input id="number" type="tel" name="number" />
-//           <ErrorMessage name="number" />
-//         </Wrapper>
-
-//         <Button type="submit">Add Contacs</Button>
-//       </Form>
-//     </Formik>
-//   );
-// };
